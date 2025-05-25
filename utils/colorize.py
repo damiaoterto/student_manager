@@ -7,11 +7,11 @@ class Colorize:
         self.style = 1
         return self
 
-    def red(self):
-        return f'\033[{self.style};{31}{self.text}\033[0m'
+    def red(self, bg=40):
+        return f"\033[{self.style};{31};{bg}m{self.text}\033[0m"
 
-    def yellow(self):
-        return f'\033[{self.style};{33}{self.text}\033[0m'
+    def yellow(self, bg=40):
+        return f"\033[{self.style};{33};{bg}m{self.text}\033[0m"
 
-    def cyan(self):
-        return f'\033[{self.style};{36}{self.text}\033[0m'
+    def cyan(self, bg=40):
+        return f"\033[{self.style};{36};{bg}m{self.text}\033[0m"

@@ -1,4 +1,4 @@
-from handlers import insert_handler, list_handler
+from handlers import insert_handler, list_handler, delete_handler
 from infra import Database
 from tui.context import Context
 from tui.menu import Menu
@@ -13,7 +13,7 @@ class Application:
         menu.append_item(1, 'Incluir', lambda: insert_handler(self._context))
         menu.append_item(2, 'Listar', lambda: list_handler(self._context))
         menu.append_item(3, 'Atualizar', None)
-        menu.append_item(4, 'Excluir', None)
+        menu.append_item(4, 'Excluir', lambda: delete_handler(self._context))
         menu.append_item(9, 'Sair', lambda: self.exit())
         menu.show()
 

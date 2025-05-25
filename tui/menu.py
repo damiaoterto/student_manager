@@ -21,16 +21,21 @@ class Menu:
 
             try:
                 self._option = int(input('Digite uma opção: '))
-                selected_item = [item for item in self._items if item['order'] == self._option][0]
+                selected_item = [item for item in self._items if item['order'] == self._option]
                 clear_terminal()
+
                 if not selected_item:
-                    print(Colorize('\n Opção não encontrada. \n').bold().red())
+                    print(Colorize('\n Opção não encontrada, tente novamente. \n').bold().red())
+                    input("\nPressione <enter> para continuar...")
                     continue
-                selected_item['handler']()
+
+                selected_item[0]['handler']()
                 clear_terminal()
             except ValueError:
                 clear_terminal()
                 print(Colorize('\nErro: Digite um número válido\n').bold().red())
+                input("\nPressione <enter> para continuar...")
+                clear_terminal()
 
     def show(self):
         self._mount_menu()

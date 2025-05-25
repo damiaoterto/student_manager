@@ -42,5 +42,10 @@ class Database:
         self._cursor.execute(query, params)
         self._connection.commit()
 
+    def delete_item(self, table: str, idx):
+        query = f'DELETE FROM {table} WHERE id = ?'
+        self._cursor.execute(query, (idx,))
+        self._connection.commit()
+
     def close(self):
         self._connection.close()
