@@ -43,10 +43,12 @@ class Database:
         self._connection.commit()
 
     def update_item(self, table: str, columns: list[str], params: slice, idx: int):
-        cols = ' = ?,'.join(columns)
-        query = f'UPDATE {table} SET {cols} WHERE id = ?'
+        cols = [f"{x} = ?" for x in columns]
+        query = f'UPDATE {table} SET {','.join(cols)} WHERE id = {idx}'
 
-        self._cursor.execute(query, (idx,) + params)
+        print(query)
+
+        self._cursor.execute(query, params)
         self._connection.commit()
 
     def delete_item(self, table: str, idx):
