@@ -46,8 +46,6 @@ class Database:
         cols = [f"{x} = ?" for x in columns]
         query = f'UPDATE {table} SET {','.join(cols)} WHERE id = {idx}'
 
-        print(query)
-
         self._cursor.execute(query, params)
         self._connection.commit()
 
