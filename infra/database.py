@@ -42,6 +42,13 @@ class Database:
         self._cursor.execute(query, params)
         self._connection.commit()
 
+    def update_item(self, table: str, columns: list[str], params: slice, idx: int):
+        cols = ' = ?,'.join(columns)
+        query = f'UPDATE {table} SET {cols} WHERE id = ?'
+
+        self._cursor.execute(query, (idx,) + params)
+        self._connection.commit()
+
     def delete_item(self, table: str, idx):
         query = f'DELETE FROM {table} WHERE id = ?'
         self._cursor.execute(query, (idx,))
