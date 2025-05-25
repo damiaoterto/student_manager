@@ -1,3 +1,4 @@
+from handlers import insert_handler, list_handler
 from infra import Database
 from tui.context import Context
 from tui.menu import Menu
@@ -9,11 +10,11 @@ class Application:
 
     def _mount_menu(self):
         menu = Menu('::Estudante', 'Menu de Operações')
-        menu.append_item(1, 'Incluir', lambda: print('Opt 1'))
-        menu.append_item(2, 'Listar', None)
+        menu.append_item(1, 'Incluir', lambda: insert_handler(self._context))
+        menu.append_item(2, 'Listar', lambda: list_handler(self._context))
         menu.append_item(3, 'Atualizar', None)
         menu.append_item(4, 'Excluir', None)
-        menu.append_item(9, 'Sair', None)
+        menu.append_item(9, 'Sair', lambda: self.exit())
         menu.show()
 
     def run(self):

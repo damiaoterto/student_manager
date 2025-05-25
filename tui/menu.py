@@ -26,6 +26,7 @@ class Menu:
                     print('\n Opção não encontrada. \n')
                     continue
                 selected_item['handler']()
+                clear_terminal()
             except ValueError:
                 clear_terminal()
                 print('\nErro: Digite um número válido\n')
