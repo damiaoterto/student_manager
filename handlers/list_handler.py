@@ -9,10 +9,8 @@ def list_handler(ctx: Context):
 
     result = db.select_all('alunos')
 
-    for line in result:
-        id, nome, idade = line
+    for id, nome, idade in result:
         print(f'[{id}]: {nome} | {idade} anos')
 
     print('\n')
-
     input("Precione qualquer tecla para sair...")
