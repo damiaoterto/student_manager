@@ -1,4 +1,5 @@
-from utils import clear_terminal
+from utils import clear_terminal, Colorize
+
 
 class Menu:
     def __init__(self, title: str, description: str):
@@ -23,13 +24,13 @@ class Menu:
                 selected_item = [item for item in self._items if item['order'] == self._option][0]
                 clear_terminal()
                 if not selected_item:
-                    print('\n Opção não encontrada. \n')
+                    print(Colorize('\n Opção não encontrada. \n').bold().red())
                     continue
                 selected_item['handler']()
                 clear_terminal()
             except ValueError:
                 clear_terminal()
-                print('\nErro: Digite um número válido\n')
+                print(Colorize('\nErro: Digite um número válido\n').bold().red())
 
     def show(self):
         self._mount_menu()
